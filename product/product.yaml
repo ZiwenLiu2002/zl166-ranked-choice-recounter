@@ -1,0 +1,11 @@
+_ > nanoagent.plugin.v0001.ProductConfig:
+tagline: "Recount every ranked-choice round"
+summary: "Turn ranked ballots into a transparent instant-runoff audit trail with deterministic elimination ties and exhausted-ballot accounting."
+highlights:
+  - "Shows every round and tally"
+  - "Handles exhausted ballots explicitly"
+  - "Applies a reproducible tie rule"
+steps:
+  - "List candidate ids and ranked ballots"
+  - "Run the recount"
+  - "Inspect eliminations and the verified winner"

@@ -1,0 +1,24 @@
+_ > nanoagent.plugin.v0001.ManifestConfig:
+id: zl166-ranked-choice-recounter
+name: Ranked Choice Recounter
+version: 0.1.0
+status: ready
+spec: nanoagent.plugin/v0001
+runtime > nanoagent.plugin.v0001.RuntimeConfig:
+  type: mcp_stdio
+  command: [uv, run, --frozen, python, -m, plugin]
+permissions > nanoagent.plugin.v0001.PermissionsConfig:
+  network > nanoagent.plugin.v0001.NetworkConfig:
+    hosts: []
+  filesystem > nanoagent.plugin.v0001.FilesystemConfig:
+    write: [workspace]
+tools > dict[contract.Tool, nanoagent.plugin.v0001.ToolConfig]:
+  recount_election:
+    description: Recount a single-winner ranked-choice election with a complete round audit trail
+tasks > dict[contract.Task, nanoagent.plugin.v0001.TaskConfig]:
+  recount-ranked-choice:
+    description: Determine every instant-runoff round and the winner
+    runner: tool
+    tools: [recount_election]
+    reference: null
+    instructions: Count first active preferences each round. Elect a strict majority; otherwise eliminate the lowest tally, breaking a tie by eliminating the lexicographically greatest id.
