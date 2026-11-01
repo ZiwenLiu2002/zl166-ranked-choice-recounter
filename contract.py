@@ -1,5 +1,3 @@
-"""Typed contract for deterministic instant-runoff recounts."""
-
 from dataclasses import dataclass
 from enum import Enum
 from typing import Annotated
